@@ -5,10 +5,10 @@ const Navbar = () => {
   return (
     <nav className="nav-wrapper red darken-3">
       <div className="container">
-        <Link className="brand-logo" to="/">
+        <Link className="brand-logo center" to="/">
           Poke's Times
         </Link>
-        <ul className="right">
+        <ul className="left">
           <li>
             <NavLink to="/"> Home </NavLink>
           </li>

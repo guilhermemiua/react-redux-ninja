@@ -5,15 +5,13 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: null,
-      post: []
+      post: null
     };
   }
 
   componentDidMount() {
     let id = this.props.match.params.post_id;
-
-    axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`).then(res => {
+    axios.get("https://jsonplaceholder.typicode.com/posts/" + id).then(res => {
       this.setState({
         post: res.data
       });
@@ -21,19 +19,16 @@ class Post extends Component {
   }
 
   render() {
-    const { post } = this.state;
-
-    return (
-      <div className="container">
-        <h4> Route parameter </h4>
-        <div className="post card" key={post.id}>
-          <div className="card-content">
-            <span className="card-title">{post.title}</span>
-            <p> {post.body} </p>
-          </div>
-        </div>
+    const post = this.state.post ? (
+      <div className="post">
+        <h4 className="center"> {this.state.post.title} </h4>
+        <p> {this.state.post.body} </p>
       </div>
+    ) : (
+      <div className="center"> Loading post ... </div>
     );
+
+    return <div className="container">{post}</div>;
   }
 }
 

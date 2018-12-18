@@ -22,11 +22,9 @@ class Home extends Component {
     const postList = this.state.posts.length ? (
       this.state.posts.map(post => {
         return (
-          <div onClick={this.handleClick} className="post card" key={post.id}>
+          <div className="post card" key={post.id}>
             <div className="card-content">
-              <Link
-                to={`https://jsonplaceholder.typicode.com/posts/${post.id}`}
-              >
+              <Link to={"/" + post.id}>
                 <span className="card-title">{post.title}</span>
               </Link>
               <p> {post.body} </p>
